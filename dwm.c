@@ -147,6 +147,7 @@ typedef struct {
 } Rule;
 
 /* function declarations */
+static void shiftview(const Arg *arg);
 static void applyrules(Client *c);
 static int applysizehints(Client *c, int *x, int *y, int *w, int *h, int interact);
 static void arrange(Monitor *m);
@@ -994,6 +995,26 @@ isuniquegeom(XineramaScreenInfo *unique, size_t n, XineramaScreenInfo *info)
 	return 1;
 }
 #endif /* XINERAMA */
+
+/** Function to shift the current view to the left/right
+ *
+ * @param: "arg->i" stores the number of tags to shift right (positive value)
+ *          or left (negative value)
+ */
+void
+shiftview(const Arg *arg) {
+	Arg shifted;
+
+	if(arg->i > 0) // left circular shift
+		shifted.ui = (selmon->tagset[selmon->seltags] << arg->i)
+		   | (selmon->tagset[selmon->seltags] >> (LENGTH(tags) - arg->i));
+
+	else // right circular shift
+		shifted.ui = selmon->tagset[selmon->seltags] >> (- arg->i)
+		   | selmon->tagset[selmon->seltags] << (LENGTH(tags) + arg->i);
+
+	view(&shifted);
+}
 
 void
 keypress(XEvent *e)
