@@ -86,7 +86,7 @@ static Keychord keychords[] = {
 	{1, {{MODKEY, XK_Tab}},							view,           {0} },
 	{1, {{MODKEY|ShiftMask, XK_c}},					killclient,     {0} },
 	{1, {{MODKEY, XK_t}},							setlayout,      {.v = &layouts[0]} },
-	{1, {{MODKEY, XK_f}},							setlayout,      {.v = &layouts[1]} },
+	//{1, {{MODKEY, XK_f}},							setlayout,      {.v = &layouts[1]} },
 	{1, {{MODKEY, XK_m}},							setlayout,      {.v = &layouts[2]} },
 	{1, {{MODKEY, XK_space}},						setlayout,      {0} },
 	{1, {{MODKEY|ShiftMask, XK_space}},				togglefloating, {0} },
