@@ -64,22 +64,24 @@ static const char *emacs[]  = { "emacs", NULL };
 
 static Keychord keychords[] = {
 	/* Keys        function        argument */
-  {1, {{MODKEY, XK_p}}, spawn, SHCMD("rofi -show drun") },
-  {1, {{MODKEY, XK_e}}, spawn, SHCMD("emacs") },
-  {1, {{MODKEY, XK_f}}, spawn, SHCMD("firefox") },
-  {1, {{MODKEY, XK_Return}}, spawn, SHCMD("alacritty") },
-  {1, {{MODKEY, XK_comma}}, shiftview, {.i = -1} },
-  {1, {{MODKEY, XK_period}}, shiftview, {.i = +1} },
-  {1, {{MODKEY, XK_q}}, killclient, {0} },
+  {1, {{MODKEY, XK_p}}, spawn, 		SHCMD("rofi -show drun") },
+  {1, {{MODKEY, XK_e}}, spawn, 		SHCMD("emacs") },
+  {1, {{MODKEY, XK_f}}, spawn, 		SHCMD("firefox") },
+  {1, {{MODKEY, XK_Return}}, spawn, 	SHCMD("alacritty") },
+
+  {1, {{MODKEY, XK_q}}, killclient, 	{0} },
   {1, {{MODKEY|ShiftMask, XK_r}}, quit, {0} },
 
+  {1, {{MODKEY|ShiftMask, XK_k}}, shiftview,	{.i = -1} },
+  {1, {{MODKEY|ShiftMask, XK_l}}, shiftview, 	{.i = +1} },
+  {1, {{MODKEY, XK_j}}, setmfact,		{.f = -0.05} },
+  {1, {{MODKEY, XK_k}},	focusstack,     	{.i = +1 } },
+  {1, {{MODKEY, XK_l}},	focusstack,     	{.i = -1 } },
+  {1, {{MODKEY, XK_semicolon}},	setmfact, 	{.f = +0.05} },
+
 	{1, {{MODKEY, XK_b}},							togglebar,      {0} },
-	{1, {{MODKEY, XK_j}},							focusstack,     {.i = +1 } },
-	{1, {{MODKEY, XK_k}},							focusstack,     {.i = -1 } },
 	{1, {{MODKEY, XK_i}},							incnmaster,     {.i = +1 } },
 	{1, {{MODKEY, XK_d}},							incnmaster,     {.i = -1 } },
-	{1, {{MODKEY, XK_h}},							setmfact,       {.f = -0.05} },
-	{1, {{MODKEY, XK_l}},							setmfact,       {.f = +0.05} },
 	//{1, {{MODKEY, XK_Return}},						zoom,           {0} },
 	{1, {{MODKEY, XK_Tab}},							view,           {0} },
 	{1, {{MODKEY|ShiftMask, XK_c}},					killclient,     {0} },
@@ -90,8 +92,8 @@ static Keychord keychords[] = {
 	{1, {{MODKEY|ShiftMask, XK_space}},				togglefloating, {0} },
 	{1, {{MODKEY, XK_0}},							view,           {.ui = ~0 } },
 	{1, {{MODKEY|ShiftMask, XK_0}},					tag,            {.ui = ~0 } },
-	//{1, {{MODKEY, XK_comma}},						focusmon,       {.i = -1 } },
-	//{1, {{MODKEY, XK_period}},						focusmon,       {.i = +1 } },
+	{1, {{MODKEY, XK_comma}},						focusmon,       {.i = -1 } },
+	{1, {{MODKEY, XK_period}},						focusmon,       {.i = +1 } },
 	{1, {{MODKEY|ShiftMask, XK_comma}},				tagmon,         {.i = -1 } },
 	{1, {{MODKEY|ShiftMask, XK_period}},			tagmon,         {.i = +1 } },
 	TAGKEYS(                        XK_1,                      0)
